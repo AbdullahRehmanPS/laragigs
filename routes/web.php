@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ListingController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\Listing;
@@ -14,6 +15,8 @@ use App\Models\Listing;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+//Resource Method Naming (1:44:09)
 // Common Resource Routes:
 // index - Show all listings
 // show - Show single listing
@@ -25,26 +28,37 @@ use App\Models\Listing;
 
 //view basics and passing data: changes name of resources/view/welcome.blade.php to listings.blade.php
 // and changed return view('welcome') to ('listings') (28:26)
-Route::get('/', function () {
-    return view('listings', [
-        'heading' => 'Latest',
-        'listings' => Listing::all()
-    ]);
-});
+//Route::get('/', function () {
+//    return view('listings', [
+//        'listings' => Listing::all()
+//    ]);
+//});
 
 //Route::get('/listings/{id}', function ($id) {
 //    return view('listing', [
 //        'listing' => Listing::find($id)
 //    ]);
 //});
-
 //replacement for upper route because upper route will not handle unexpected params (Route Model Binding 1:26:00)
-Route::get('/listings/{listing}', function (Listing $listing) {
-    return view('listing', [
-        //'listing' => Listing::find($listing)
-        'listing' => $listing //(this line will work same as upper line)
-    ]);
-});
+//Route::get('/listings/{listing}', function (Listing $listing) {
+//    return view('listing', [
+//        //'listing' => Listing::find($listing)
+//        'listing' => $listing //(this line will work same as upper line)
+//    ]);
+//});
+
+//These two routes are created using Controller, and these two routes are replacement for upper two routes
+Route::get('/', [ListingController::class, 'index']);
+Route::get('/listings/{listing}', [ListingController::class, 'show']);
+
+
+
+
+
+
+
+
+
 
 
 //routing and responses(13:50)

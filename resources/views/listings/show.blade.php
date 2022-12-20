@@ -1,5 +1,6 @@
-@extends('layout')
-@section('content')
+{{--@extends('layout')--}}
+{{--@section('content')--}}
+<x-layout>
     @include('partials/_search')
     {{--<h1>{{$listing['title']}}</h1>--}}
     {{--<p>{{$listing['description']}}</p>--}}
@@ -36,4 +37,5 @@
             </div>
         </x-card>
     </div>
-@endsection
+</x-layout>
+{{--@endsection--}}
