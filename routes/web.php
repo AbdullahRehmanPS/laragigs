@@ -50,6 +50,7 @@ use App\Models\Listing;
 //These two routes are created using Controller, and these two routes are replacement for upper two routes
 Route::get('/', [ListingController::class, 'index']);    //all listings
 Route::get('/listings/create', [ListingController::class,'create']);  //show create form
+Route::post('/listings', [ListingController::class, 'store']);      //store listings data
 Route::get('/listings/{listing}', [ListingController::class, 'show']);  //single listing
 
 
