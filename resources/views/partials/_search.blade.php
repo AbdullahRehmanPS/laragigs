@@ -10,7 +10,7 @@
                placeholder="Search Laravel Gigs..."/>
 
         <div class="absolute top-2 right-2">
-            <button type="submit" class="h-10 w-20 text-white rounded-lg bg-red-500 hover:bg-red-600">
+            <button type="submit" class="h-10 w-20 text-white rounded-lg bg-laravel hover:bg-pink-500">
                 Search
             </button>
         </div>
