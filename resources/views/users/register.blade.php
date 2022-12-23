@@ -4,7 +4,7 @@
             <h2 class="text-2xl font-bold uppercase mb-1">Register</h2>
             <p class="mb-4">Create an account to post gigs</p>
         </header>
-        <form action="" method="POST">
+        <form action="/users" method="POST">
             @csrf
             <div class="mb-6">
                 <label for="name" class="inline-block text-lg mb-2">Name</label>

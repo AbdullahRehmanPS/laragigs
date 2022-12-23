@@ -56,9 +56,8 @@ Route::get('/listings/{listing}', [ListingController::class, 'show']);  //single
 Route::get('/listings/{listing}/edit', [ListingController::class, 'edit']); //Show edit form
 Route::put('/listings/{listing}', [ListingController::class, 'update']); //Update Listing
 Route::delete('/listings/{listing}', [ListingController::class, 'destroy']);  //delete listing
-Route::get('/register', [UserController::class, 'register']);
-
-
+Route::get('/register', [UserController::class, 'register']); //register user
+Route::post('/users', [UserController::class, 'store']); //store user data
 
 
 //routing and responses(13:50)
