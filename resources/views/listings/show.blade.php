@@ -20,10 +20,9 @@
                     <i class="fa-solid fa-location-dot"></i>{{$listing->location}}
                 </div>
                 <div class="border border-gray-200 w-full mb-6"></div>
+
                 <div>
-                    <h3 class="text-3xl font-bold mb-4">
-                        Job Description
-                    </h3>
+                    <h3 class="text-3xl font-bold mb-4">Job Description</h3>
                     <div class="text-lg space-y-6">
                         <p>{{$listing->description}}</p>
                         <a href="mailto:{{$listing->email}}" class="block bg-laravel text-white mt-6 py-2 rounded-xl hover:opacity-80">
@@ -34,7 +33,20 @@
                         </a>
                     </div>
                 </div>
+
             </div>
+        </x-card>
+        <x-card class="mt-4 flex space-x-6">
+            <a href="/listings/{{$listing->id}}/edit" target="_blank">
+                <i class="fa-solid fa-edit"></i>Edit
+            </a>
+            <form action="/listings/{{}}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button class="text-red-500">
+                    <i class="fa-solid fa-trash"></i>Delete
+                </button>
+            </form>
         </x-card>
     </div>
 </x-layout>

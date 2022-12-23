@@ -52,10 +52,9 @@ Route::get('/', [ListingController::class, 'index']);    //all listings
 Route::get('/listings/create', [ListingController::class,'create']);  //show create form
 Route::post('/listings', [ListingController::class, 'store']);      //store listings data
 Route::get('/listings/{listing}', [ListingController::class, 'show']);  //single listing
-
-
-
-
+Route::get('/listings/{listing}/edit', [ListingController::class, 'edit']); //Show edit form
+Route::put('/listings/{listing}', [ListingController::class, 'update']); //Update Listing
+Route::delete('/listings/', [ListingController::class, 'destroy']);
 
 
 
