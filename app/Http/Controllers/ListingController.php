@@ -14,6 +14,7 @@ class ListingController extends Controller
           //'listings' => Listing::all(),
         'listings' => Listing::latest()->filter(request(['tag','search']))
             ->paginate(6)
+            //->Simplepaginate(6)
         ]);
     }
     public function show(Listing $listing)
@@ -70,5 +71,10 @@ class ListingController extends Controller
         //Listing::create($formFields);
         $listing->update($formFields);
         return redirect('/')->with('message', 'Listing updated successfully!');
+    }
+    public function destroy(Listing $listing)
+    {
+        $listing->delete();
+        return redirect('/')->with('message', 'Listing deleted successfully!');
     }
 }
