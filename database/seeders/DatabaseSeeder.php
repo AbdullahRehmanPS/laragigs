@@ -16,10 +16,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-         User::factory(10)->create();
-         Listing::factory(10)->create();
+         //User::factory(10)->create();
 
-         Listing::create([
+         $user = User::factory()->create([
+             'name' => 'Qamar Bajwa',
+             'email' => 'qamar@gmail.com'
+         ]);
+        Listing::factory(5)->create([
+            'user_id' => $user->id
+        ]);
+
+        /* Listing::create([
              'title' => 'Laravel Senior Developer',
              'tags' => 'laravel, javascript',
              'company' => 'Acme Corp',
@@ -42,7 +49,7 @@ class DatabaseSeeder extends Seeder
              adipisicing elit. Ipsam minima et illo reprehenderit quas
               possimus voluptas repudiandae cum expedita, eveniet aliquid,
               quam illum quaerat consequatur! Expedita ab consectetur tenetur delensiti?'
-           ]);
+           ]); */
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

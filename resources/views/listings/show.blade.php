@@ -26,10 +26,10 @@
                     <div class="text-lg space-y-6">
                         <p>{{$listing->description}}</p>
                         <div class="flex flex-col items-center justify-center text-center">
-                            <a href="mailto:{{$listing->email}}" target="_blank" class="bg-laravel text-white w-60 mt-6 py-2 rounded-xl hover:opacity-80">
+                            <a href="mailto:{{$listing->email}}" target="_blank" class="bg-laravel text-white w-60 mt-6 py-2 rounded-xl hover:bg-black">
                                 <i class="fa-solid fa-envelope"></i> Contact Employer
                             </a>
-                            <a href="{{$listing->website}}" target="_blank" class="bg-black text-white mt-3 w-60 py-2 rounded-xl hover:opacity-80">
+                            <a href="{{$listing->website}}" target="_blank" class="bg-black text-white mt-3 w-60 py-2 rounded-xl hover:bg-laravel">
                                 <i class="fa-solid fa-globe"></i> Visit Website
                             </a>
                         </div>

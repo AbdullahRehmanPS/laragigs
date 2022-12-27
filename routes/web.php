@@ -50,14 +50,19 @@ use App\Models\Listing;
 
 //These two routes are created using Controller, and these two routes are replacement for upper two routes
 Route::get('/', [ListingController::class, 'index']);    //all listings
-Route::get('/listings/create', [ListingController::class,'create']);  //show create form
-Route::post('/listings', [ListingController::class, 'store']);      //store listings data
+Route::get('/listings/create', [ListingController::class,'create'])->middleware('auth');  //show create form
+Route::post('/listings', [ListingController::class, 'store'])->middleware('auth');      //store listings data
 Route::get('/listings/{listing}', [ListingController::class, 'show']);  //single listing
-Route::get('/listings/{listing}/edit', [ListingController::class, 'edit']); //Show edit form
-Route::put('/listings/{listing}', [ListingController::class, 'update']); //Update Listing
-Route::delete('/listings/{listing}', [ListingController::class, 'destroy']);  //delete listing
-Route::get('/register', [UserController::class, 'register']); //register user
+Route::get('/listings/{listing}/edit', [ListingController::class, 'edit'])->middleware('auth'); //Show edit form
+Route::put('/listings/{listing}', [ListingController::class, 'update'])->middleware('auth'); //Update Listing
+Route::delete('/listings/{listing}', [ListingController::class, 'destroy'])->middleware('auth');  //delete listing
+
+
+Route::get('/register', [UserController::class, 'register'])->middleware('guest'); //register user
 Route::post('/users', [UserController::class, 'store']); //store user data
+Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
+Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
+Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 
 
 //routing and responses(13:50)
@@ -66,7 +71,6 @@ Route::get('/hello', function () {
         ->header('Content-Type', 'text/plain')
         ->header('foo', 'bar');
 });
-
 //wildcard endpoints: use {} to give wildcard(19:28)
 //route constraints: add route constraints using where(20:16)
 //Die Dump Helpers(dd,ddd):(21:06)
@@ -74,8 +78,6 @@ Route::get('/posts/{id}', function ($id) {
     //ddd($id);
     return response('Post: ' . $id);
 })->where('id', '[0-9]+');
-
-
 Route::get('/search', function (Request $request) {
     dd($request);
 });

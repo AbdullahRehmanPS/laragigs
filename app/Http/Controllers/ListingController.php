@@ -32,7 +32,8 @@ class ListingController extends Controller
         //dd($request->all());
         $formFields = $request->validate([
             'title' => 'required',
-            'company' => ['required', Rule::unique('listings', 'company')],
+//            'company' => ['required', Rule::unique('listings', 'company')],
+            'company' => ['required'],
             'location' => 'required',
             'website' => 'required',
             'email' => ['required', 'email'],
@@ -43,6 +44,7 @@ class ListingController extends Controller
         if ($request->hasFile('logo')) {
             $formFields['logo'] = $request->file('logo')->store('logos', 'public');
         }
+        $formFields['user_id'] = auth()->id();
         //$formFields
         Listing::create($formFields);
         return redirect('/')->with('message', 'Listing created successfully!');
